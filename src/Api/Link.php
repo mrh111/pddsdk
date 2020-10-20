@@ -36,6 +36,9 @@ class Link extends pddUnionGateWay
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
+            'generate_schema_url' => true,
+            'generate_qq_app' => true,
+            'generate_weiboapp_webview' => true
         ];
         if (empty($p_id)) {
             $params['p_id'] = $this->pid;
@@ -54,16 +57,25 @@ class Link extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function createRedbaoUrl($p_id = '', $short = false)
+    public function createRedbaoUrl($p_id = '', $channel_type =10, $parameters='',$short = false)
     {
         $params = [
             'p_id_list' => [$p_id],
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
+            'generate_schema_url' => true,
+            'generate_qq_app' => true,
+            'generate_weiboapp_webview' => true
         ];
         if (empty($p_id)) {
             $params['p_id_list'] = [$this->pid];
+        }
+        if(!empty($channel_type)){
+            $params['channel_type'] = $channel_type;
+        }
+        if(!empty($parameters)){
+            $params['custom_parameters'] = $parameters;
         }
         $result = $this->send('pdd.ddk.rp.prom.url.generate', $params);
         if (!$result) {
