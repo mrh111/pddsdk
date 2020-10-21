@@ -101,6 +101,9 @@ class Goods extends pddUnionGateWay
         if (!isset($params['page_size'])) {
             $params['page_size'] = 20;
         }
+        if (empty($params['pid'])) {
+            $params['pid'] = $this->pid;
+        }
         return $this->send('pdd.ddk.goods.search', $params);
     }
 
