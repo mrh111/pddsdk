@@ -29,7 +29,7 @@ class Authority extends pddUnionGateWay
         if(!$pid){
             $params['pid'] = $this->pid;
         }
-        return $this->send('pdd.ddk.goods.search', $params);
+        return $this->send('pdd.ddk.member.authority.query', $params);
     }
 
 }

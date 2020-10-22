@@ -13,6 +13,7 @@ use pddUnionSdk\Api\Goods;
 use pddUnionSdk\Api\Link;
 use pddUnionSdk\Api\Promotion;
 use pddUnionSdk\Api\Theme;
+use pddUnionSdk\Api\Authority;
 
 /**
  * Class pddUnionFactory
