@@ -39,14 +39,16 @@ class Promotion extends pddUnionGateWay
      * @api 创建多多进宝推广位
      * @param int $number 要生成的推广位数量
      * @param array $p_id_name_list 推广位名称，例如["1","2"]
+     * @param string $media_id 媒体id
      * @return mixed|string
      * @throws \Exception
      */
-    public function createPid($number = 10, $p_id_name_list = [])
+    public function createPid($number = 1, $p_id_name_list = [], $media_id='')
     {
         $params = [
             'number' => $number,
-            'p_id_name_list' => $p_id_name_list
+            'p_id_name_list' => $p_id_name_list,
+            'media_id' => $media_id
         ];
         return $this->send('pdd.ddk.goods.pid.generate', $params);
     }
