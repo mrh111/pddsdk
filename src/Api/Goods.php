@@ -77,12 +77,6 @@ class Goods extends pddUnionGateWay
      */
     public function detail(array $params = [])
     {
-        $skuID = $params['goods_id'];
-        if (is_string($skuID)) {
-            $params['goods_sign'] = [$skuID];
-        } else {
-            $params['goods_id_list'] = $skuID;
-        }
         $result = $this->send('pdd.ddk.goods.detail', $params);
         if (!$result) {
             return $result;
