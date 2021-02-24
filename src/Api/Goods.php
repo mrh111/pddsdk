@@ -75,10 +75,11 @@ class Goods extends pddUnionGateWay
      * @throws \Exception
      * @api 多多进宝商品详情查询
      */
-    public function detail($skuID)
+    public function detail(array $params = [])
     {
+        $skuID = $params['goods_id'];
         if (is_string($skuID)) {
-            $params['goods_id_list'] = [$skuID];
+            $params['goods_sign'] = [$skuID];
         } else {
             $params['goods_id_list'] = $skuID;
         }
