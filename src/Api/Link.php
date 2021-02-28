@@ -32,7 +32,7 @@ class Link extends pddUnionGateWay
     {
         $params = [
             'p_id' => $p_id,
-            'goods_id_list' => [$goods_id],
+            'goods_sign_list' => [$goods_id],
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
