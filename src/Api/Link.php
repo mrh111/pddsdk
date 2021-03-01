@@ -134,7 +134,7 @@ class Link extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function covertOtherToMyPidUrl($pid = '', $source_url)
+    public function covertOtherToMyPidUrl($source_url, $pid = '', $custom_parameters='')
     {
         $params = [
             'pid' => $pid,
@@ -142,6 +142,9 @@ class Link extends pddUnionGateWay
         ];
         if (empty($pid)) {
             $params['pid'] = $this->pid;
+        }
+        if($custom_parameters){
+            $params['custom_parameters'] = $custom_parameters;
         }
         return $this->send('pdd.ddk.goods.zs.unit.url.gen', $params);
     }
