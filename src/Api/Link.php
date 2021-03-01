@@ -28,11 +28,9 @@ class Link extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function createCpsUrl($p_id = '', string $goods_id, $short = false)
+    public function createCpsUrl($data = [], $short = false)
     {
         $params = [
-            'p_id' => $p_id,
-            'goods_sign_list' => [$goods_id],
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
@@ -40,8 +38,25 @@ class Link extends pddUnionGateWay
             'generate_qq_app' => true,
             'generate_weiboapp_webview' => true
         ];
-        if (empty($p_id)) {
-            $params['p_id'] = $this->pid;
+        $params['p_id'] = $this->pid;
+
+        if (!empty($data['p_id'])) {
+            $params['p_id'] = $data['p_id'];
+        }
+        if(!empty($data['goods_sign_list'])){
+            $params['goods_sign_list'] = $data['goods_sign_list'];
+        }
+        if (!empty($data['crash_gift_id'])) {
+            $params['crash_gift_id'] = $data['crash_gift_id'];
+        }
+        if(!empty($data['zs_duo_id'])) {
+            $params['zs_duo_id'] = $data['zs_duo_id'];
+        }
+        if(!empty($data['search_id'])){
+            $params['search_id'] = $data['search_id'];
+        }
+        if(!empty($data['multi_group'])){
+            $params['multi_group'] = $data['multi_group'];
         }
         $result = $this->send('pdd.ddk.goods.promotion.url.generate', $params);
         if (!$result) {
