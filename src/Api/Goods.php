@@ -42,25 +42,25 @@ class Goods extends pddUnionGateWay
             'offset' => ($page - 1) * $pageSize,
             'limit' => $pageSize,
         ];
-        if ($data['activity_tags']){
+        if (!empty($data['activity_tags'])){
             $params['activity_tags'] = $data['activity_tags'];
         }
-        if($data['cat_id']){
+        if(!empty($data['cat_id'])){
             $params['cat_id'] = $data['cat_id'];
         }
         if (empty($data['pid'])) {
             $params['pid'] = $this->pid;
         }
-        if ($data['channel_type']){
+        if (!empty($data['channel_type'])){
             $params['channel_type'] = $data['channel_type'];
         }
-        if($data['goods_sign_list']){
+        if(!empty($data['goods_sign_list'])){
             $params['goods_sign_list'] = $data['goods_sign_list'];
         }
-        if($data['list_id']){
+        if(!empty($data['list_id'])){
             $params['list_id'] = $data['list_id'];
         }
-        if($data['custom_parameters']){
+        if(!empty($data['custom_parameters'])){
             $params['custom_parameters'] = $data['custom_parameters'];
         }
 
